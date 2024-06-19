@@ -377,9 +377,9 @@ modify_agent_config() {
             args="$*"
         fi
     fi
-
+    echo -e "> nezha-agent service install"
     ${NZ_AGENT_PATH}/nezha-agent service install -s "$nz_grpc_host:$nz_grpc_port" -p $nz_client_secret $args >/dev/null 2>&1
-
+    echo -e "> nezha-agent service install2"
     if [ $? -ne 0 ]; then
         ${NZ_AGENT_PATH}/nezha-agent service uninstall >/dev/null 2>&1
         ${NZ_AGENT_PATH}/nezha-agent service install -s "$nz_grpc_host:$nz_grpc_port" -p $nz_client_secret $args >/dev/null 2>&1
